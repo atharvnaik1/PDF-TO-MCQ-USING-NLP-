@@ -138,7 +138,7 @@ st.write(
 
 def main():
     st.title("🧠💬AIQuestor:- ATHARV NAIK \n PDF to Multiple-Choice Questions Generator(Using NLP & AI)")
-     linkedin_text = "LinkedIn"
+    linkedin_text = "LinkedIn"
     linkedin_link = "https://www.linkedin.com/in/atharv-naik-3175551b4/"
     
     st.markdown(f"[{linkedin_text}]({linkedin_link})")
