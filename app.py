@@ -152,7 +152,7 @@ def main():
     if uploaded_chapter:
         chapter_text = reading_pdf(uploaded_chapter)
 
-    if selected_section == "🏠 EXTRACTED_TEXT":
+    if selected_section == "🏠 EXTRACT TEXT":
         st.subheader("Chapter Context:")
 
         if uploaded_chapter:
