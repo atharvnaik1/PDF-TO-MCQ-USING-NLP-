@@ -138,7 +138,6 @@ st.write(
 
 def main():
     st.title("🧠💬AIQuestor:- ATHARV NAIK \n PDF to Multiple-Choice Questions Generator(Using NLP & AI)")
-    st.subheader("PDF to Multiple-Choice Questions Generator(Using NLP & AI)")
     st.sidebar.header("Sections")
     selected_section = st.sidebar.radio("Select Section",["🏠 EXTRACTED_TEXT", "📝 Generate Questions"])
 
