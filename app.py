@@ -2,17 +2,24 @@ import streamlit as st
 import random
 import PyPDF2
 import spacy
+import tempfile
+
 
 # Load the spaCy model
 nlp = spacy.load("en_core_web_sm")
 
-def reading_pdf(pdf):
-    with open(pdf, 'rb') as file:
+
+def reading_pdf(uploaded_file):
+    with tempfile.NamedTemporaryFile(delete=False, suffix=".pdf") as temp_file:
+        temp_file.write(uploaded_file.read())
+
+    with open(temp_file.name, 'rb') as file:
         reader = PyPDF2.PdfReader(file)
         context = ''
-        for i in reader.pages:
-            context += i.extract_text()
-        return context
+        for page in reader.pages:
+            context += page.extract_text()
+
+    return context
 
 
 def get_mca_questions(context: str, num_questions: int):
@@ -126,37 +133,41 @@ st.write(
 # textColor="#3f3131"
 
 
-#   Define the Streamlit app
+#   Define the Streamlit app    
+# # selected_section = st.sidebar.radio("Select Section", ["🏠 EXTRACTED_TEXT", "📝 Generate Questions"])
+
 def main():
-    icon_url = "file:///E:/nlp-mcq/icon.png"
-    st.markdown(f'<div style="text-align:center"><img src="{icon_url}"></div>', unsafe_allow_html=True)
-    
-    st.title("PDF to Multiple-Choice Questions Generator using NLP")
-
+    st.title("PDF to Multiple-Choice Questions Generator")
     st.sidebar.header("Sections")
+    selected_section = st.sidebar.radio("Select Section",["🏠 EXTRACTED_TEXT", "📝 Generate Questions"])
 
+    uploaded_chapter = st.file_uploader("Upload a chapter PDF", type=["pdf"])
 
-    selected_section = st.sidebar.radio("Select Section", ["🏠 EXTRACTED_TEXT", "📝 Generate Questions"])
+    if uploaded_chapter:
+        chapter_text = reading_pdf(uploaded_chapter)
+
+    if selected_section == "🏠 EXTRACTED_TEXT":
+        st.subheader("Chapter Context:")
+
+        if uploaded_chapter:
+            st.write(chapter_text)
 
     if selected_section == "📝 Generate Questions":
         num_questions = st.number_input("Enter the number of questions:", min_value=1, value=5, step=1)
 
-        chapter_paths = ['E:\\nlp-mcq/chapter-2.pdf', 'E:\\nlp-mcq/chapter-3.pdf', 'E:\\nlp-mcq/chapter-4.pdf']
-        selected_chapter = st.selectbox("Select a chapter", chapter_paths)
+        if uploaded_chapter:
+            # st.write("Chapter Text:")
+            # st.write(chapter_text)
 
-        if st.button("Generate Questions"):
-            chapter_text = reading_pdf(selected_chapter)
-            mca_questions = get_mca_questions(chapter_text, num_questions)
-
-            for i, question in enumerate(mca_questions, start=1):
-                st.write(f" {question}")
-
-    if selected_section == "🏠 EXTRACTED_TEXT":
-        st.subheader("Chapter Context:")
-        chapter_paths = ['E:\\nlp-mcq/chapter-2.pdf', 'E:\\nlp-mcq/chapter-3.pdf', 'E:\\nlp-mcq/chapter-4.pdf']
-        selected_chapter = st.selectbox("Select a chapter", chapter_paths)
-        chapter_text = reading_pdf(selected_chapter)
-        st.write(chapter_text)
+            if st.button("Generate Questions"):
+                result = get_mca_questions(chapter_text, num_questions)
+# gives error if result is str
+                if isinstance(result, str):
+                    st.write(result)
+                else:
+                    for i, question in enumerate(result, start=1):
+                        st.write(f" {question}")
 
 if __name__ == "__main__":
     main()
+    
