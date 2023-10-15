@@ -137,8 +137,8 @@ st.write(
 # # selected_section = st.sidebar.radio("Select Section", ["🏠 EXTRACTED_TEXT", "📝 Generate Questions"])
 
 def main():
-    st.title("AIQuestor")
-    st.subheader("PDF to Multiple-Choice Questions Generator(Using NLP && AI")
+    st.title("🌆💬 AIQuestor:- BY ATHARVNAIK")
+    st.subheader("PDF to Multiple-Choice Questions Generator(Using NLP & AI")
     st.subheader("Tech-Stacks: python, streamlit,nlp libraries, deep learning")
     st.sidebar.header("Sections")
     selected_section = st.sidebar.radio("Select Section",["🏠 EXTRACTED_TEXT", "📝 Generate Questions"])
