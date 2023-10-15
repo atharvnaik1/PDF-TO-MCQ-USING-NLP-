@@ -143,7 +143,7 @@ def main():
     
     st.markdown(f"[{linkedin_text}]({linkedin_link})")
     
-    st.sidebar.header("Sections")
+    st.sidebar.header("## Sections")
     selected_section = st.sidebar.radio("Select Section",["🏠 EXTRACTED_TEXT", "📝 Generate Questions"])
 
     uploaded_chapter = st.file_uploader("Upload a chapter PDF", type=["pdf"])
