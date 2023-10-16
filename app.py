@@ -144,7 +144,7 @@ def main():
     st.markdown(f"[{linkedin_text}]({linkedin_link})")
     
     with st.form("selected_section"):
-        selected_section = st.radio("Select Section",["🏠 EXTRACT TEXT From PDF", "📝 Generate Questions" ,"Custom Text"])
+        selected_section = st.radio("Select Section",["🏠 EXTRACT TEXT From PDF", "📝 Generate Questions" ,"Type your text"])
         st.form_submit_button("Submit")
 
     uploaded_chapter = st.file_uploader("Upload a chapter PDF", type=["pdf"])
