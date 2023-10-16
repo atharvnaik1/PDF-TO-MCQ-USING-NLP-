@@ -137,7 +137,7 @@ st.write(
 # # selected_section = st.sidebar.radio("Select Section", ["🏠 EXTRACTED_TEXT", "📝 Generate Questions"])
 
 def main():
-    st.title("🧠💬AIQuestor:- ATHARV NAIK \n PDF to Multiple-Choice Questions Generator(Using NLP & AI)")
+    st.title("🧠💬 AIQuestor :- ATHARV NAIK \n PDF to Multiple-Choice Questions Generator(Using NLP & AI)")
     linkedin_text = "LinkedIn"
     linkedin_link = "https://www.linkedin.com/in/atharv-naik-3175551b4/"
     
