@@ -144,7 +144,7 @@ def main():
     st.markdown(f"[{linkedin_text}]({linkedin_link})")
     
     with st.form("selected_section"):
-        selected_section = st.radio("Select Section",["🏠 EXTRACT TEXT", "📝 Generate Questions"])
+        selected_section = st.radio("Select Section",["🏠 EXTRACT TEXT", "📝 Generate Questions" ,"Custom Text"])
         st.form_submit_button("Submit")
 
     uploaded_chapter = st.file_uploader("Upload a chapter PDF", type=["pdf"])
@@ -167,13 +167,28 @@ def main():
 
             if st.button("Generate Questions"):
                 result = get_mca_questions(chapter_text, num_questions)
-# gives error if result is str
+# gives error if result is str we want list 
                 if isinstance(result, str):
                     st.write(result)
                 else:
                     for i, question in enumerate(result, start=1):
                         st.write(f" {question}")
+                        
+    
+    if selected_section == "Custom Text":
+        # Custom Text input for generating questions
+        st.subheader("Generate Questions from Custom Text")
+        custom_text = st.text_area("Enter your text here")
+        
+        if st.button("Generate Questions from Custom Text"):
+            num_questions = st.number_input("Enter the number of questions:", min_value=1, value=5, step=1)
+            result_custom = get_mca_questions(custom_text, num_questions)
 
+            if isinstance(result_custom, str):
+                st.write(result_custom)
+            else:
+                for i, question in enumerate(result_custom, start=1):
+                    st.write(f" {question}")
 if __name__ == "__main__":
     main()
     
