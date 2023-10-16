@@ -176,12 +176,14 @@ def main():
                         
     
     if selected_section == "Custom Text":
+        
         # Custom Text input for generating questions
         st.subheader("Generate Questions from Custom Text")
         custom_text = st.text_area("Enter your text here")
+        num_questions = st.number_input("Enter the number of questions:", min_value=1, value=5, step=1)
+
         
         if st.button("Generate Questions from Custom Text"):
-            num_questions = st.number_input("Enter the number of questions:", min_value=1, value=5, step=1)
             result_custom = get_mca_questions(custom_text, num_questions)
 
             if isinstance(result_custom, str):
