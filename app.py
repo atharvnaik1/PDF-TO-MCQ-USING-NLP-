@@ -144,7 +144,7 @@ def main():
     st.markdown(f"[{linkedin_text}]({linkedin_link})")
     
     with st.form("selected_section"):
-        selected_section = st.radio("Select Section",["🏠 EXTRACT TEXT", "📝 Generate Questions" ,"Custom Text"])
+        selected_section = st.radio("Select Section",["🏠 EXTRACT TEXT From PDF", "📝 Generate Questions" ,"Custom Text"])
         st.form_submit_button("Submit")
 
     uploaded_chapter = st.file_uploader("Upload a chapter PDF", type=["pdf"])
@@ -152,7 +152,7 @@ def main():
     if uploaded_chapter:
         chapter_text = reading_pdf(uploaded_chapter)
 
-    if selected_section == "🏠 EXTRACT TEXT":
+    if selected_section == "🏠 EXTRACT TEXT From PDF":
         st.subheader("Chapter Context:")
 
         if uploaded_chapter:
@@ -175,7 +175,7 @@ def main():
                         st.write(f" {question}")
                         
     
-    if selected_section == "Custom Text":
+    if selected_section == "Type your text":
         
         # Custom Text input for generating questions
         st.subheader("Generate Questions from Custom Text")
