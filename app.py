@@ -137,11 +137,12 @@ st.write(
 # # selected_section = st.sidebar.radio("Select Section", ["🏠 EXTRACTED_TEXT", "📝 Generate Questions"])
 
 def main():
-    st.title("🧠💬 AIQuestor :- ATHARV NAIK \n PDF to Multiple-Choice Questions Generator(Using NLP & AI)")
-    linkedin_text = "LinkedIn"
-    linkedin_link = "https://www.linkedin.com/in/atharv-naik-3175551b4/"
+    # AIQuestor :- 🧠ATHARV NAIK \n PDF to Multiple-Choice Questions Generator(Using NLP & AI)"
+    st.title("💬 MCQ Generator 💬 )
+    # linkedin_text = "LinkedIn"
+    # linkedin_link = "https://www.linkedin.com/in/atharv-naik-3175551b4/"
     
-    st.markdown(f"[{linkedin_text}]({linkedin_link})")
+    # st.markdown(f"[{linkedin_text}]({linkedin_link})")
     
     with st.form("selected_section"):
         selected_section = st.radio("Select Section",["🏠 EXTRACT TEXT From PDF", "📝 Generate Questions" ,"Type your text"])
