@@ -138,7 +138,7 @@ st.write(
 
 def main():
     # AIQuestor :- 🧠ATHARV NAIK \n PDF to Multiple-Choice Questions Generator(Using NLP & AI)"
-    st.title("💬 MCQ Generator 💬 )
+    st.title("💬 MCQ Generator 💬" )
     # linkedin_text = "LinkedIn"
     # linkedin_link = "https://www.linkedin.com/in/atharv-naik-3175551b4/"
     
